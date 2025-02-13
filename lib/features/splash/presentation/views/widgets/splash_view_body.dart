@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/assets.dart';
 import '../../../../home/presentation/views/home_view.dart';
 import 'sliding_text.dart';
@@ -74,13 +76,17 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(seconds: 2), () {
-      if (!mounted)
-        return; // Ensure widget is still in the tree before using context
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeView()),
-      );
-    });
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        // if (!mounted)
+        //   return; // Ensure widget is still in the tree before using context
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => const HomeView()),
+        // );
+        GoRouter.of(context).push(AppRouter.kHomeView);
+      },
+    );
   }
 }
