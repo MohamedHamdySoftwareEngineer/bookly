@@ -5,6 +5,7 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
+import 'book_rating.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({super.key});
@@ -78,37 +79,6 @@ class BestSellerListViewItem extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class BookRating extends StatelessWidget {
-  const BookRating({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        Icon(
-          FontAwesomeIcons.solidStar,
-          color: Color(0xffFFDD4f),
-          size: 15,
-        ),
-        SizedBox(
-          width: 6,
-        ),
-        Text(
-          "4.8",
-          style: Styles.textStyle14,
-        ),
-        SizedBox(
-          width: 6,
-        ),
-        Text(
-          "(2539)",
-          style: Styles.textStyle14,
-        ),
-      ],
     );
   }
 }
