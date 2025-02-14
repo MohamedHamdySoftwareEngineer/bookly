@@ -27,7 +27,7 @@ class BestSellerListViewItem extends StatelessWidget {
                   color: kPrimaryColor, // takes the scaffold background color
                   image: const DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage(AssetsData.book2),
+                    image: AssetImage(AssetsData.book1),
                   ),
                 ),
               ),
