@@ -22,5 +22,3 @@ class Bookly extends StatelessWidget {
     );
   }
 }
-
-

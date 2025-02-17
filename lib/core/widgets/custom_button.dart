@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import '../utils/styles.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key,required this.text,required this.backgroundColor,required this.textColor ,  this.borderRadius,  this.fontSize});
+  const CustomButton(
+      {super.key,
+      required this.text,
+      required this.backgroundColor,
+      required this.textColor,
+      this.borderRadius,
+      this.fontSize});
 
   final String text;
   final Color backgroundColor;
@@ -19,16 +25,15 @@ class CustomButton extends StatelessWidget {
         style: TextButton.styleFrom(
           backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
-            borderRadius: borderRadius?? BorderRadius.circular(12),
+            borderRadius: borderRadius ?? BorderRadius.circular(12),
           ),
         ),
         child: Text(
           text,
           style: Styles.textStyle18.copyWith(
-            color: textColor,
-            fontWeight: FontWeight.w900,
-            fontSize: fontSize
-          ),
+              color: textColor,
+              fontWeight: FontWeight.w900,
+              fontSize: fontSize),
         ),
       ),
     );
