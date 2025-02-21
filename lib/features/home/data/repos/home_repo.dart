@@ -5,6 +5,6 @@ import '../models/book_model/book_model.dart';
 abstract class HomeRepo {
   // بحدد ال feature هتعمل اي
   // for the home feature : you need to identify the feature in home screen
-  Future<Either<Failures,List<BookModel>>> fetchBestSellerBooks();
-  Future<Either<Failures,List<BookModel>>> fetchFeaturedBooks();
+  Future<Either<Failures, List<BookModel>>> fetchNewestBooks();
+  Future<Either<Failures, List<BookModel>>> fetchFeaturedBooks();
 }

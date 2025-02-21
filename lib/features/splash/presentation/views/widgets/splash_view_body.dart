@@ -78,12 +78,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        // if (!mounted)
-        //   return; // Ensure widget is still in the tree before using context
-        // Navigator.pushReplacement(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => const HomeView()),
-        // );
+        
         GoRouter.of(context).push(AppRouter.kHomeView);
       },
     );
