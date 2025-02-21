@@ -19,14 +19,17 @@ class ServerFailure extends Failures {
       case DioErrorType.receiveTimeout:
         return ServerFailure('Recieve timeout with Apiserver');
       case DioErrorType.response:
-        // TODO: Handle this case.
-        break;
+        return ServerFailure.fromResponse(
+            dioError.response!.statusCode!, dioError.response!.data);
       case DioErrorType.cancel:
-        // TODO: Handle this case.
-        break;
+        return ServerFailure('Request to Apisever was canceld');
       case DioErrorType.other:
-        // TODO: Handle this case.
-        break;
+        if (dioError.message.contains('SocketException')) {
+          return ServerFailure('No Internet Connection');
+        }
+        return ServerFailure('Unexpected Error, Please try later.');
+      default:
+        return ServerFailure('Oops! There was an error!, Please try again.');
     }
   }
 
@@ -35,8 +38,10 @@ class ServerFailure extends Failures {
       return ServerFailure(response['error']['message']);
     } else if (statusCode == 404) {
       return ServerFailure('Your request not found!,Please try later.');
-    }
-    else if (statusCode == 500) {
+    } else if (statusCode == 500) {
       return ServerFailure('Internal Server Error!,Please try later.');
+    } else {
+      return ServerFailure('Oops! There was an error!, Please try Later.');
+    }
   }
 }

@@ -29,14 +29,32 @@ class HomeRepoImplementation implements HomeRepo {
     } catch (e) {
       // DioError have the status code(anyone except 200) and the respose (the api result)
       if (e is DioError) {
-        return left(ServerFailure(e.message));
+        return left(ServerFailure.fromDioError(e));
       }
+      return left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failures, List<BookModel>>> fetchFeaturedBooks() {
-    // TODO: implement fetchFeaturedBooks
-    throw UnimplementedError();
+  Future<Either<Failures, List<BookModel>>> fetchFeaturedBooks() async{
+    try {
+      var data = await apiService.get(
+          endPoint:
+              'volumes?q=subject:programming&Filtering=free-ebooks');
+      // the data that will return in List format
+      List<BookModel> books = [];
+
+      for (var item in data['items']) {
+        books.add(BookModel.fromBookJson(item));
+      }
+
+      return right(books);
+    } catch (e) {
+      // DioError have the status code(anyone except 200) and the respose (the api result)
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
   }
 }
