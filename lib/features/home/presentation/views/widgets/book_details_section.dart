@@ -14,7 +14,7 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.18),
-          child: const CustomBookImage(),
+          child: const CustomBookImage(imageUrl: 'https://imgd.aeplcdn.com/642x361/cw/ec/33282/MercedesBenz-GClass-Exterior-120349.jpg?wm=1&q=80',),
         ),
         const SizedBox(
           height: 10,

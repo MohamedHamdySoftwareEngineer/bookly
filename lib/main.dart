@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/src/bloc_provider.dart';
-import 'package:flutter_bloc/src/multi_bloc_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 import 'core/utils/app_router.dart';
@@ -21,10 +21,11 @@ class Bookly extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        // if this feature will be in this screen only , you should put it in this screen not here (putting here will include all application)
         BlocProvider<FeaturedBooksCubit>(
           create: (context) => FeaturedBooksCubit(
             getIt.get<HomeRepoImplementation>(),
-          ),
+          )..fetchFeaturedBooks(),
         ),
         BlocProvider<NewestBooksCubit>(
           create: (context) => NewestBooksCubit(
