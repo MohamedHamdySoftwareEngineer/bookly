@@ -18,7 +18,6 @@ class FeaturedBooksListView extends StatelessWidget {
           return SizedBox(
             height: screenHeight * 0.27,
             child: ListView.builder(
-              
               itemCount: state.books.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
