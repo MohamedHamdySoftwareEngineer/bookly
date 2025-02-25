@@ -25,6 +25,10 @@ class VolumeInfo extends Equatable {
   final String? previewLink;
   final String? infoLink;
   final String? canonicalVolumeLink;
+  
+  // New fields for ratings
+  final double? averageRating;
+  final int? ratingsCount;
 
   const VolumeInfo({
     this.title,
@@ -46,6 +50,8 @@ class VolumeInfo extends Equatable {
     this.previewLink,
     this.infoLink,
     this.canonicalVolumeLink,
+    this.averageRating,
+    this.ratingsCount,
   });
 
   factory VolumeInfo.fromBookJson(Map<String, dynamic> json) => VolumeInfo(
@@ -72,12 +78,15 @@ class VolumeInfo extends Equatable {
             ? null
             : PanelizationSummary.fromBookJson(
                 json['panelizationSummary'] as Map<String, dynamic>),
-        imageLinks:ImageLinks.fromBookJson(
-                json['imageLinks'] as Map<String, dynamic>),
+        imageLinks: ImageLinks.fromBookJson(
+            json['imageLinks'] as Map<String, dynamic>),
         language: json['language'] as String?,
         previewLink: json['previewLink'] as String?,
         infoLink: json['infoLink'] as String?,
         canonicalVolumeLink: json['canonicalVolumeLink'] as String?,
+        // Extracting the new rating fields
+        averageRating: (json['averageRating'] as num?)?.toDouble(),
+        ratingsCount: json['ratingsCount'] as int?,
       );
 
   Map<String, dynamic> toBookJson() => {
@@ -96,11 +105,14 @@ class VolumeInfo extends Equatable {
         'allowAnonLogging': allowAnonLogging,
         'contentVersion': contentVersion,
         'panelizationSummary': panelizationSummary?.toBookJson(),
-        'imageLinks': imageLinks?.toBookJson(),
+        'imageLinks': imageLinks.toBookJson(),
         'language': language,
         'previewLink': previewLink,
         'infoLink': infoLink,
         'canonicalVolumeLink': canonicalVolumeLink,
+        // Adding the new rating fields to the JSON
+        'averageRating': averageRating,
+        'ratingsCount': ratingsCount,
       };
 
   @override
@@ -125,6 +137,8 @@ class VolumeInfo extends Equatable {
       previewLink,
       infoLink,
       canonicalVolumeLink,
+      averageRating, // new field
+      ratingsCount,  // new field
     ];
   }
 }

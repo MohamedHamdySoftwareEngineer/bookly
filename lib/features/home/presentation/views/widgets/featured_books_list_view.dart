@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/widgets/custom__loading__indicator.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
-import '../../manger/features/featured_books/presentation/cubit/featured_books_cubit.dart';
+import '../../manager/features/featured_books/presentation/cubit/featured_books_cubit.dart';
 import 'custom_book_image.dart';
 
 class FeaturedBooksListView extends StatelessWidget {

@@ -6,8 +6,8 @@ import 'constants.dart';
 import 'core/utils/app_router.dart';
 import 'core/utils/service_locator.dart';
 import 'features/home/data/repos/home_repo_implementation.dart';
-import 'features/home/presentation/manger/features/featured_books/presentation/cubit/featured_books_cubit.dart';
-import 'features/home/presentation/manger/features/newest books/presentation/newest_books_cubit/newest_books_cubit.dart';
+import 'features/home/presentation/manager/features/featured_books/presentation/cubit/featured_books_cubit.dart';
+import 'features/home/presentation/manager/features/newest books/presentation/newest_books_cubit/newest_books_cubit.dart';
 
 void main() {
   setupServiceLocator();
@@ -30,7 +30,7 @@ class Bookly extends StatelessWidget {
         BlocProvider<NewestBooksCubit>(
           create: (context) => NewestBooksCubit(
             getIt.get<HomeRepoImplementation>(),
-          ),
+          )..fetchNewestBooks(),
         ),
       ],
       child: MaterialApp.router(
